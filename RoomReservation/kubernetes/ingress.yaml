@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: roomreservation-ingress
+spec:
+    rules:
+        - host: roomreservation.example
+          http:
+            paths:
+              - pathType: ImplementationSpecific
+                backend:
+                  service:
+                    name: roomreservation-service
+                    port: 
+                      number: 80
+                path: /

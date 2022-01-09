@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block ref %}
+<link rel="stylesheet" href="{% static 'css/restaurantInquire/restaurantInquire.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav>
+    <div class="nav-wrapper grey darken-1 rinquirenav">
+      <a href="{% url 'login:afterLogin' %}" class="logo">R</a>
+      <span class="navtitle">預約系統</span>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'login:logout_user' %}" class="navlink">登出</a></li>
+      </ul>
+    </div>
+</nav>
+<div class="row rinquiretitle">
+    <h3>訂位查詢</h3>        
+</div>
+<body> 
+    <div class="sidenav sidenav-fixed grey rinquiresidenav">
+        <ul id="slide-out">
+            <li><a href="{% url 'room:room' %}" class="navsidelink">場地預約</a></li>
+            <li><a href="{% url 'inquire:inquire' %}" class="navsidelink">預約查詢</a></li>
+            <li><a href="{% url 'restaurant:restaurant' %}" class="navsidelink">餐廳訂位</a></li>
+            <li><a href="{% url 'restaurantInquire:rinquire' %}" class="navsidelink">訂位查詢</a></li>
+        </ul>
+    </div>
+    
+    <div class="rinquirepage">
+        <div class="row">
+            <form method="POST">
+                <table class="striped col s12">
+                    <thead>
+                        <tr>
+                            <th width="10%">場地</th>
+                            <th width="10%">日期</th>
+                            <th width="10%">時間</th>
+                            <th width="10%">預約姓名</th>
+                            <th width="10%">人數</th>
+                        </tr>
+                    </thead>
+
+                    {% for reservation in reservations %}
+                    <tbody>
+                        <tr>
+                            <td><a href="{% url 'restaurantInquire:rinquire_modify' %}?Id={{ reservation.ReservationId }}"> {{ reservation.ChainId }}</a></td>
+                            <td>{{ reservation.Rdate }}</td>
+                            <td>{{ reservation.Rtime }}</td>
+                            <td>{{ reservation.Rname }}</td>
+                            <td>{{ reservation.Rpeople }}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </form>    
+        </div>     
+    </div>
+    
+
+{% block js-ref %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript", src="{% static 'js/materialize.js' %}"></script> 
+{% endblock js-ref %}
+
+</body>
+{% endblock content %}

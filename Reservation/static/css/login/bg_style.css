@@ -1,0 +1,52 @@
+body{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(229,229,229);
+    overflow-y: hidden;
+    overflow-x: hidden; 
+}
+.loginpage{
+    position:absolute;
+    top:15%;
+    left:20%;  
+    width:60%;
+    height:70%;
+    padding: 5rem;
+    background-color: white; 
+    box-shadow: 2px 2px 2px grey;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    font-size: 250px;
+}
+.loginlogo{
+    margin-right: 100px;
+}
+.loginform{
+    margin-top: 15%;
+}
+
+.loginfail{
+
+    font-family: Microsoft Yahei;
+}
+
+@font-face {
+    font-family: 'WeddingTextBT-Regular';
+    src: url('../../font/WeddingTextBT-Regular.woff2') format('woff2'),
+        url('../../font/WeddingTextBT-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SentyTEA';
+    src: url('../../font/SentyTEA.woff2') format('woff2'),
+        url('../../font/SentyTEA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

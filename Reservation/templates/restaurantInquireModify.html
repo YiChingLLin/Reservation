@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block ref %}
+<link rel="stylesheet" href="{% static 'css/restaurantInquire/restaurantInquireModify.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav>
+    <div class="nav-wrapper grey darken-1 rinquirenav">
+      <a href="{% url 'login:afterLogin' %}" class="logo">R</a>
+      <span class="navtitle">預約系統</span>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'login:logout_user' %}" class="navlink">登出</a></li>
+      </ul>
+    </div>
+</nav>
+<div class="row rinquiretitle">
+    <h3>訂位修改 - {{ chain }}</h3>        
+</div>
+<body> 
+    <div class="sidenav sidenav-fixed grey rinquiresidenav">
+        <ul id="slide-out">
+            <li><a href="{% url 'room:room' %}" class="navsidelink">場地預約</a></li>
+            <li><a href="{% url 'inquire:inquire' %}" class="navsidelink">預約查詢</a></li>
+            <li><a href="{% url 'restaurant:restaurant' %}" class="navsidelink">餐廳訂位</a></li>
+            <li><a href="{% url 'restaurantInquire:rinquire' %}" class="navsidelink">訂位查詢</a></li>
+        </ul>
+    </div>
+    
+    <div class="rinquirepage">
+        <form class="col" method="POST">
+            {% csrf_token %}
+            <div class="row rinquireMform">
+                <div class="input-field col s6">
+                    <input disabled value={{date}} type="text" id="inquireMdate" name="inquireMdate" required>
+                    <label for="inquireMdate">日期</label>
+                </div>
+            </div>
+            <div class="row rinquireMform">
+                <div class="input-field col s6">
+                    <input disabled value={{time}} type="text" id="inquireMtime" name="inquireMtime" required>
+                    <label for="inquireMtime">時間</label>
+                </div>
+            </div>
+            <div class="row rinquireMform">
+                <div class="input-field col s6">
+                    <input value={{name}} type="text" id="inquireMname" name="inquireMname" required>
+                    <label for="inquireMname">姓名</label>
+                </div>
+            </div>
+            <div class="row rinquireMform">
+                <div class="input-field col s6">
+                    <input value={{people}} type="text" id="inquireMpeople" name="inquireMpeople" required>
+                    <label for="inquireMpeople">人數</label>
+                </div>
+            </div>
+            <div class="row rinquireMform">
+                <div class="input-field col s6">
+                    <input value={{detail}} type="text" id="inquireMdetail" name="inquireMdetail">
+                    <label for="inquireMdetail">備註</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-white right grey rinquireMbtn"><a href="{% url 'restaurantInquire:rinquire_delete' %}?Id={{ ReservationId }}" class="white-text">刪除預約</a>
+                    <i class="material-icons right"><a href="{% url 'restaurantInquire:rinquire_delete' %}?Id={{ ReservationId }}" class="white-text">delete</a></i>
+                </button>
+                <button class="btn waves-effect waves-white right grey rinquireMbtn"><a href="{% url 'restaurantInquire:rinquire' %}" class="white-text">取消修改</a>
+                    <i class="material-icons right"><a href="{% url 'restaurantInquire:rinquire' %}" class="white-text">clear</a></i>
+                </button>
+                <button class="btn waves-effect waves-white right grey rinquireMbtn" type="submit">確認修改
+                    <i class="material-icons right">check</i>
+                </button>
+            </div>    
+        </form>       
+    </div>
+    
+
+{% block js-ref %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript", src="{% static 'js/materialize.js' %}"></script> 
+{% endblock js-ref %}
+
+</body>
+{% endblock content %}

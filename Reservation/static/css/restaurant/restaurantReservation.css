@@ -1,0 +1,74 @@
+body{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(229,229,229);
+    overflow-y: hidden;
+    overflow-x: hidden; 
+}
+
+.restaurantpage{
+    position:absolute;
+    top:20%;
+    left:20%;  
+    width:75%;
+    height:75%;
+    padding: 3rem;
+    background-color: white; 
+    box-shadow: 2px 2px 2px grey;
+    border-radius: 10px;
+}
+
+.logo {
+    font-size: 50px;
+    margin-left: 2%;
+}
+.navtitle{
+    font-size: 18px;
+    margin-left: 1%;
+}
+.navlink{
+    font-size: 18px;
+}
+
+.restaurantnav{
+    height:8%;
+}
+
+.restaurantsidenav{
+    top:8.2%;
+    width:15%;
+}
+
+.navsidelink{
+    font-size: 30px;
+}
+
+.restauranttitle{
+    margin-left: 21%;
+}
+
+.restaurantRform{
+    padding:0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.restaurantRbtn{
+    margin-right: 5%;
+}
+
+@font-face {
+    font-family: 'WeddingTextBT-Regular';
+    src: url('../../font/WeddingTextBT-Regular.woff2') format('woff2'),
+        url('../../font/WeddingTextBT-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SentyTEA';
+    src: url('../../font/SentyTEA.woff2') format('woff2'),
+        url('../../font/SentyTEA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

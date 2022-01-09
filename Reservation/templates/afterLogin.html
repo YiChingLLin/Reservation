@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block ref %}
+<link rel="stylesheet" href="{% static 'css/room/room.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav>
+    <div class="nav-wrapper grey darken-1 roomnav">
+      <a href="{% url 'login:afterLogin' %}" class="logo">R</a>
+      <span class="navtitle">預約系統</span>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'login:logout_user' %}" class="navlink">登出</a></li>
+      </ul>
+    </div>
+</nav>
+
+<body> 
+    <div class="sidenav sidenav-fixed grey roomsidenav">
+        <ul id="slide-out">
+            <li><a href="{% url 'room:room' %}" class="navsidelink">場地預約</a></li>
+            <li><a href="{% url 'inquire:inquire' %}" class="navsidelink">預約查詢</a></li>
+            <li><a href="{% url 'restaurant:restaurant' %}" class="navsidelink">餐廳訂位</a></li>
+            <li><a href="{% url 'restaurantInquire:rinquire' %}" class="navsidelink">訂位查詢</a></li>
+        </ul>
+    </div>
+    
+{% block js-ref %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript", src="{% static 'js/materialize.js' %}"></script> 
+{% endblock js-ref %}
+
+</body>
+{% endblock content %}

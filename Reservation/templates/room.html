@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block ref %}
+<link rel="stylesheet" href="{% static 'css/room/room.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav>
+    <div class="nav-wrapper grey darken-1 roomnav">
+      <a href="{% url 'login:afterLogin' %}" class="logo">R</a>
+      <span class="navtitle">預約系統</span>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'login:logout_user' %}" class="navlink">登出</a></li>
+      </ul>
+    </div>
+</nav>
+<div class="row roomtitle">
+    <h3>場地預約</h3>        
+</div>
+<body> 
+    <div class="sidenav sidenav-fixed grey roomsidenav">
+        <ul id="slide-out">
+            <li><a href="{% url 'room:room' %}" class="navsidelink">場地預約</a></li>
+            <li><a href="{% url 'inquire:inquire' %}" class="navsidelink">預約查詢</a></li>
+            <li><a href="{% url 'restaurant:restaurant' %}" class="navsidelink">餐廳訂位</a></li>
+            <li><a href="{% url 'restaurantInquire:rinquire' %}" class="navsidelink">訂位查詢</a></li>
+        </ul>
+    </div>
+    
+    <div class="roompage">
+        {% for company in companies %}
+        <div class="row">
+            <h4>{{ company.CompanyName }}</h4>  
+            <h6>營業時間: {{ company.CompanyOpenTime }}</h6>
+            <h6>地址: {{ company.CompanyAddress }} </h6>
+        </div>
+        {% endfor %}
+
+        <div class="row">
+            <form method=" ">
+                <div class="col s6">
+                    <div class="input-field col s6">
+                        <input type=text id="roomdate" class="datepicker" name="roomdate" value={{date}} required>
+                        <label for="roomdate">日期</label>
+                    </div>
+                    <div class="col s1">
+                        <button class="btn grey" type="submit"><i class="material-icons">check</i></button>
+                    </div>
+                </div>
+                <table class="striped col s12">
+                    {% for time in times %}
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>{{ time.Time1 }}</th>
+                            <th>{{ time.Time2 }}</th>
+                            <th>{{ time.Time3 }}</th>
+                            <th>{{ time.Time4 }}</th>
+                            <th>{{ time.Time5 }}</th>
+                        </tr>
+                    </thead>
+                    
+                    {% for room in rooms %}
+                    <tbody>
+                        <tr>
+                            <td>{{ room.RoomName }}</td>
+                            <td><a href="{% url 'room:room_reservation' %}?room={{ room.RoomName }}&date={{ date }}&time={{ time.Time1 }}">Available</a></td>
+                            <td><a href="{% url 'room:room_reservation' %}?room={{ room.RoomName }}&date={{ date }}&time={{ time.Time2 }}">Available</a></td>
+                            <td><a href="{% url 'room:room_reservation' %}?room={{ room.RoomName }}&date={{ date }}&time={{ time.Time3 }}">Available</a></td>
+                            <td><a href="{% url 'room:room_reservation' %}?room={{ room.RoomName }}&date={{ date }}&time={{ time.Time4 }}">Available</a></td>
+                            <td><a href="{% url 'room:room_reservation' %}?room={{ room.RoomName }}&date={{ date }}&time={{ time.Time5 }}">Available</a></td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                    {% endfor %}
+                </table>
+            </form>    
+        </div>     
+    </div>
+    
+
+{% block js-ref %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript", src="{% static 'js/materialize.js' %}"></script> 
+<script type="text/javascript", src="{% static 'js/room/room.js' %}"></script>
+{% endblock js-ref %}
+
+</body>
+{% endblock content %}

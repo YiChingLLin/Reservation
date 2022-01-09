@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reservation-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: reservation
+    spec:
+      containers:
+        - name: reservation-container
+          image: yichingllin/reservation-docker
+          ports:
+            - containerPort: 8000
+          env:
+            - name: ROOM_BACKEND_URL
+              value: http://roomreservation-service
+            - name: RESTAURANT_BACKEND_URL
+              value: http://restaurantreservation-service 
+  selector:
+    matchLabels:
+      app: reservation

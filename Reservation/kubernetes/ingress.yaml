@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: reservation-ingress
+spec:
+    rules:
+        - host: reservation.example
+          http:
+            paths:
+              - pathType: ImplementationSpecific
+                backend:
+                  service:
+                    name: reservation-service
+                    port: 
+                      number: 80
+                path: /

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block ref %}
+<link rel="stylesheet" href="{% static 'css/login/bg_style.css' %}">
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="loginpage">
+        <div class="row">
+            
+            <div class="col loginlogo">
+                <h1 class="logo">R</h1>
+            </div>
+
+            <form class="col loginform" method="POST">
+                {% csrf_token %}
+                <div class="row loginfail red-text">
+                    <h6>{{ user }} {{ error_text }}</h6>
+                    
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input type="text" id="user_name" name="username" required>
+                        <label for="user_name">User Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock_outlinee</i>
+                        <input type="password" id="password" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-white right grey" type="submit">Login
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>         
+        </div>
+    </div>
+    
+
+{% block js-ref %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript", src="{% static 'js/materialize.js' %}"></script> 
+<script type="text/javascript", src="{% static 'js/login/feature_show.js' %}"></script>
+{% endblock js-ref %}
+
+</body>
+{% endblock content %}

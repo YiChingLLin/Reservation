@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: reservation-service
+spec:
+   selector:
+     app: reservation
+   type: NodePort
+   ports:
+     - name: reservation
+       protocol: TCP
+       port: 80
+       targetPort: 8000

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: roomreservation-service
+spec:
+   selector:
+     app: roomreservation
+   type: NodePort
+   ports:
+     - name: roomreservation
+       protocol: TCP
+       port: 80
+       targetPort: 8080

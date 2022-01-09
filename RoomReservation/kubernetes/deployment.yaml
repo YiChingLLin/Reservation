@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roomreservation-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: roomreservation
+    spec:
+      containers:
+        - name: roomreservation-container
+          image: yichingllin/roomreservation-docker
+          ports:
+            - containerPort: 8080
+  selector:
+    matchLabels:
+      app: roomreservation

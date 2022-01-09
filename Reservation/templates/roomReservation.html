@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block ref %}
+<link rel="stylesheet" href="{% static 'css/room/roomReservation.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav>
+    <div class="nav-wrapper grey darken-1 roomnav">
+      <a href="{% url 'login:afterLogin' %}" class="logo">R</a>
+      <span class="navtitle">預約系統</span>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'login:logout_user' %}" class="navlink">登出</a></li>
+      </ul>
+    </div>
+</nav>
+<div class="row roomtitle">
+    <h3>場地預約</h3>        
+</div>
+<body> 
+    <div class="sidenav sidenav-fixed grey roomsidenav">
+        <ul id="slide-out">
+            <li><a href="{% url 'room:room' %}" class="navsidelink">場地預約</a></li>
+            <li><a href="{% url 'inquire:inquire' %}" class="navsidelink">預約查詢</a></li>
+            <li><a href="{% url 'restaurant:restaurant' %}" class="navsidelink">餐廳訂位</a></li>
+            <li><a href="{% url 'restaurantInquire:rinquire' %}" class="navsidelink">訂位查詢</a></li>
+        </ul>
+    </div>
+     
+    <div class="roompage">
+        <div class="row">
+            <h4>{{ room }}</h4>  
+            <h6>日期: {{ date }}</h6>
+            <h6>時間: {{ time }}</h6>
+        </div>
+
+        <form class="col" method="POST">
+            {% csrf_token %}
+            <div class="row roomRform">
+                <div class="input-field col s6">
+                    <input type="text" id="roomRname" name="roomRname" required>
+                    <label for="roomRname">姓名</label>
+                </div>
+            </div>
+            <div class="row roomRform">
+                <div class="input-field col s6">
+                    <input type="text" id="roomRpeople" name="roomRpeople" required>
+                    <label for="roomRpeople">人數</label>
+                </div>
+            </div>
+            <div class="row roomRform">
+                <div class="input-field col s6">
+                    <input type="text" id="roomRtitle" name="roomRtitle" required>
+                    <label for="roomRtitle">主題</label>
+                </div>
+            </div>
+            <div class="row roomRform">
+                <div class="input-field col s6">
+                    <input type="text" id="roomRdetail" name="roomRdetail">
+                    <label for="roomRdetail">備註</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-white right grey roomRbtn" type="submit">確認
+                    <i class="material-icons right">check</i>
+                </button>
+                <button class="btn waves-effect waves-white right grey roomRbtn"><a href="{% url 'room:room' %}" class="white-text">取消</a>
+                    <i class="material-icons right"><a href="{% url 'room:room' %}" class="white-text">clear</a></i>
+                </button>
+            </div>    
+        </form>         
+    </div>
+    
+
+{% block js-ref %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript", src="{% static 'js/materialize.js' %}"></script> 
+{% endblock js-ref %}
+
+</body>
+{% endblock content %}

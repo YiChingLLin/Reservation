@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block ref %}
+<link rel="stylesheet" href="{% static 'css/restaurant/restaurantReservation.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav>
+    <div class="nav-wrapper grey darken-1 restaurantnav">
+      <a href="{% url 'login:afterLogin' %}" class="logo">R</a>
+      <span class="navtitle">預約系統</span>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url 'login:logout_user' %}" class="navlink">登出</a></li>
+      </ul>
+    </div>
+</nav>
+<div class="row restauranttitle">
+    <h3>餐廳訂位</h3>        
+</div>
+<body> 
+    <div class="sidenav sidenav-fixed grey restaurantsidenav">
+        <ul id="slide-out">
+            <li><a href="{% url 'room:room' %}" class="navsidelink">場地預約</a></li>
+            <li><a href="{% url 'inquire:inquire' %}" class="navsidelink">預約查詢</a></li>
+            <li><a href="{% url 'restaurant:restaurant' %}" class="navsidelink">餐廳訂位</a></li>
+            <li><a href="{% url 'restaurantInquire:rinquire' %}" class="navsidelink">訂位查詢</a></li>
+        </ul>
+    </div>
+     
+    <div class="restaurantpage">
+        <div class="row">
+            <h4>{{ chain }}</h4>  
+            <h6>營業時間: {{ opentime }}</h6>
+            <h6>日期: {{ date }}</h6>
+            <h6>時間: {{ time }}</h6>
+        </div>
+
+        <form class="col" method="POST">
+            {% csrf_token %}
+            <div class="row restaurantRform">
+                <div class="input-field col s6">
+                    <input type="text" id="restaurantRname" name="restaurantRname" required>
+                    <label for="restaurantRname">姓名</label>
+                </div>
+            </div>
+            <div class="row restaurantRform">
+                <div class="input-field col s6">
+                    <input type="text" id="restaurantRpeople" name="restaurantRpeople" required>
+                    <label for="restaurantRpeople">人數</label>
+                </div>
+            </div>
+            <div class="row restaurantRform">
+                <div class="input-field col s6">
+                    <input type="text" id="restaurantRdetail" name="restaurantRdetail">
+                    <label for="restaurantRdetail">備註</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-white right grey restaurantRbtn" type="submit">確認
+                    <i class="material-icons right">check</i>
+                </button>
+                <button class="btn waves-effect waves-white right grey restaurantRbtn"><a href="{% url 'restaurant:restaurant' %}" class="white-text">取消</a>
+                    <i class="material-icons right"><a href="{% url 'restaurant:restaurant' %}" class="white-text">clear</a></i>
+                </button>
+            </div>    
+        </form>         
+    </div>
+    
+
+{% block js-ref %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript", src="{% static 'js/materialize.js' %}"></script> 
+{% endblock js-ref %}
+
+</body>
+{% endblock content %}

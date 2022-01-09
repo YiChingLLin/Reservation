@@ -1,0 +1,19 @@
+<!--base.html-->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reservation</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        {% block ref %}
+        {% endblock %}
+
+    </head>
+    {% block content %}
+        {% block js-ref %}
+        {% endblock js-ref %}
+    {% endblock content %}
+</html>

@@ -7,5 +7,5 @@ $(document).ready(function() {
 
 function processData() {
   var restaurantdateElement = document.getElementById("restaurantdate");
-  var restaurantdate = restaurantdatedateElement.value;
+  var restaurantdate = restaurantdateElement.value;
 }

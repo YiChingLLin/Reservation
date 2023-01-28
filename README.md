@@ -1,19 +1,19 @@
-# Translator LineBot
+# Reservation System
 
-Use the [small100](https://github.com/alirezamshi/small100) Model to implement a translation LINE Bot that translates Chinese into multiple languages, providing users translate Chinese into English, Spanish, French, Japanese, and Korean through LINE Bot. 
+This course's final report aims to establish a microservice reservation system on Kubernetes. Use Django as the framework to develop a reservation system, use Django REST framework to achieve communication between different microservices, use Docker to create a container image, and finally, use Kubernetes to deploy microservices. This system uses Kubernetes to achieve automatic deployment, expansion, and execution of applications and uses Kubernetes' Scheduler to schedule resource allocation to help manage the three microservices in the system.
 
-## How to use
-Input the language you want to translate + space + the sentence you want to translate.
-
-- For example: input "英 今天天氣如何", and it will return "How is the weather today?".
+## System & Process
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/System.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Process.png)
 
 ## Example
-![image](https://github.com/YiChingLLin/TranslatorLineBot/blob/master/images/example.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Login.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Reservation1.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Reservation2.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Reservation3.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Reservation4.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Reservation5.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Reservation6.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Reservation7.png)
+![image](https://github.com/YiChingLLin/Reservation/blob/master/images/Reservation8.png)
 
-
-## Settings
-Need to modify the TranslatorLineBot/linebothw/settings.py
-
-![image](https://github.com/YiChingLLin/TranslatorLineBot/blob/master/images/modify1.png)
-![image](https://github.com/YiChingLLin/TranslatorLineBot/blob/master/images/modify2.png)
-![image](https://github.com/YiChingLLin/TranslatorLineBot/blob/master/images/modify3.png)
